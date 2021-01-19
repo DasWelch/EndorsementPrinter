@@ -1,25 +1,26 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import  MyLayout  from "./src/components/layout.component";
+import { StyleSheet,  View } from "react-native";
+import MyLayout from "./src/components/layout.component";
+import { Tile,Text } from "react-native-elements";
 
 export default function App() {
   return (
     <MyLayout>
-
+      <View style={styles.container}>
         <View>
-          <Text> Endorsement Title and Header</Text>
+          <Text h4>Endorsement Title and Header{"\n"}</Text>
         </View>
         <View>
-          <Text>Date endoresment give(or today) and Title</Text>
-          <Text>FAR and Description</Text>
-          <Text>Far wording with necessary added pieces</Text>
+          <Text>Date endoresment give(or today) and Title{"\n"}</Text>
+          <Text>FAR and Description{"\n"}</Text>
+          <Text>Far wording with necessary added pieces{"\n"}</Text>
           <Text>name and signature</Text>
-          <Text>Fill Cert number and expiration</Text>
+          <Text>Cert number and expiration</Text>
         </View>
+      </View>
 
-        <StatusBar style="auto" />
-
+      <StatusBar style="auto" />
     </MyLayout>
   );
 }
@@ -28,7 +29,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 5,
+    paddingBottom: 5
   },
 });

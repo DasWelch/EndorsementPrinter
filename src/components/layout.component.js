@@ -1,23 +1,20 @@
 import React from "react";
-import { SafeAreaView, View, StyleSheet, Text, StatusBar  } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, StatusBar } from "react-native";
+import { Header, Icon } from "react-native-elements";
 
 export default function MyLayout({ children }) {
   return (
     <View style={layoutStyles.appBase}>
-      <NavEntry/>
+      <Header
+        centerComponent={{ text: "Easy 61-65" }}
+        rightComponent={{ icon: "menu", color: "#fff" }}
+      />
       {children}
     </View>
   );
 }
 
-function NavEntry(){
-  return(
-<View style={layoutStyles.topBar}>
-        <Text>I am the top bar</Text>
-      </View>
-  );
-}
-
+// start of styles
 const layoutStyles = StyleSheet.create({
   appBase: {
     flex: 1,
