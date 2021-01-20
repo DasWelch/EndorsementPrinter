@@ -5,18 +5,37 @@ import MyLayout from "./src/components/layout.component";
 import { Tile, Text } from "react-native-elements";
 
 export default function App() {
+  const endorsement = testdata.Apendix_A.STUDENT_PILOT_ENDORSEMENTS[0];
+  let headtitle =
+    endorsement.lookup + " " + endorsement.title + " " + endorsement.fAR.code;
+
+  const { body, title } = endorsement;
+  const { code } = endorsement.fAR;
+  const instructorName = "Zachery J Welch";
+  const certNum = `3696885CFI`;
+  const certExp = `7/22`;
+  const date = new Date();
+
   return (
     <MyLayout>
       <View style={styles.container}>
         <View>
-          <Text h4>Endorsement Title and Header{"\n"}</Text>
+          <Text h4>
+            {headtitle}
+            {"\n"}
+          </Text>
         </View>
         <View>
-          <Text>Date endoresment give(or today) and Title{"\n"}</Text>
-          <Text>FAR and Description{"\n"}</Text>
-          <Text>Far wording with necessary added pieces{"\n"}</Text>
-          <Text>name and signature</Text>
-          <Text>Cert number and expiration</Text>
+          <Text>
+            {date.toLocaleDateString()} {title}:  § {code} {"\n"}
+          </Text>
+          <Text>
+            {body} {"\n"}
+          </Text>
+          <Text>{instructorName} | signature</Text>
+          <Text>
+            {certNum} Exp. {certExp}
+          </Text>
         </View>
       </View>
 
@@ -40,14 +59,15 @@ const testdata = {
   Apendix_A: {
     STUDENT_PILOT_ENDORSEMENTS: [
       {
-        code: `A.4`,
+        lookup: `A.4`,
         title: `Pre-solo flight training`,
         fAR: {
-          Code: 61.87,
-          subs: [c1, c2],
+          code: `61.87(c)(1) and (2)`,
         },
-        body: `I certify that [First name, MI, Last name] has received and logged pre-solo flight training for the maneuvers and procedures that are appropriate to the [make and model] aircraft. I have determined [he or she] has demonstrated satisfactory proficiency and safety on the maneuvers and procedures required by § 61.87 in this or similar make and model of aircraft to be flown.`,
+        body: `I certify that {0} has received and logged pre-solo flight training for the maneuvers and procedures that are appropriate to the {1} aircraft. I have determined {2} has demonstrated satisfactory proficiency and safety on the maneuvers and procedures required by § 61.87 in this or similar make and model of aircraft to be flown.`,
       },
     ],
   },
 };
+
+// 0 is first middle and last, 1 is make and model, 2 is the persons gender
